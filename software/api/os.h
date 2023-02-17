@@ -12,12 +12,12 @@
 /* defines                                                                   */
 /*****************************************************************************/
 
-#define OS_TASK_MAX_PRIO		( 32 )
-#define OS_MAIN_TASK_PRIO		( 5 )
+#define OS_TASK_MAX_PRIO        ( 32 )
+#define OS_MAIN_TASK_PRIO        ( 5 )
 
-#define OS_TASK_NAME_MAX_LEN	( 20 )
+#define OS_TASK_NAME_MAX_LEN    ( 20 )
 
-#define OS_CYCLE_RATE_HZ			( 2 )
+#define OS_CYCLE_RATE_HZ            ( 2 )
 
 
 /*****************************************************************************/
@@ -38,99 +38,99 @@ typedef void ( OS_TASK_FUNC )( void * pArg );
 
 
 /*****************************************************************************/
-/* public function declaration                                           	 */
+/* public function declaration                                               */
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*		OS init                                                              */
+/*      OS init                                                              */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Initalises OS and calls main thread with arguments
+ *    @brief    Initalises OS and calls main thread with arguments
  *
- *	@param	mainTask	Main task to run that will initialise all others
- *	@param	taskArgs	Pointer to arguments to pass into mainTask()
+ *    @param    mainTask    Main task to run that will initialise all others
+ *    @param    taskArgs    Pointer to arguments to pass into mainTask()
  *
- *	@return	ERROR		OS was not initialised successfully
- *						This function should not return
+ *    @return    ERROR        OS was not initialised successfully
+ *                        This function should not return
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
-int os_init( OS_TASK_FUNC	mainTask,
-			 void *			taskArgs );
+int os_init( OS_TASK_FUNC    mainTask,
+             void *            taskArgs );
 
 /*****************************************************************************/
-/*		OS task                                                              */
+/*      OS task                                                              */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Creates a new task and kicks it off imediately
+ *    @brief    Creates a new task and kicks it off imediately
  *
- *	@param	taskFunc	Task procedure
- *	@param	taskArgs	Arguments to pass to taskFunc
- *	@param	taskPrio	Task priority TODO
- *	@param	taskName	ASCII name of task (for debug)
+ *    @param    taskFunc    Task procedure
+ *    @param    taskArgs    Arguments to pass to taskFunc
+ *    @param    taskPrio    Task priority TODO
+ *    @param    taskName    ASCII name of task (for debug)
  *
- *	@return	ERROR		Task not created
- *			OK			Task created and added to sceduler
+ *    @return    ERROR        Task not created
+ *            OK            Task created and added to sceduler
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
-int os_task_create( OS_TASK_FUNC	taskFunc,
-					void *			taskArgs,
-					int				taskPrio,
-					const char *	taskName );
+int os_task_create( OS_TASK_FUNC    taskFunc,
+                    void *            taskArgs,
+                    int                taskPrio,
+                    const char *    taskName );
 
 
 /*****************************************************************************/
-/*		OS time                                                              */
+/*        OS time                                                            */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Sleeps for an allocated period of time (in ms)
+ *    @brief    Sleeps for an allocated period of time (in ms)
  *
- *	@param	sleepMs		Duration to sleep (in ms)
+ *    @param    sleepMs        Duration to sleep (in ms)
  *
- *	@return	OK			Task slept for the requested duration
- *			ERROR		Task returned early
+ *    @return    OK            Task slept for the requested duration
+ *            ERROR        Task returned early
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
-int os_sleep_ms( uint32	sleepMs );
+int os_sleep_ms( uint32    sleepMs );
 
 /*****************************************************************************/
-/*		OS mem                                                               */
+/*        OS mem                                                             */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Allocates memory from the heap
+ *    @brief    Allocates memory from the heap
  *
- *	@param	size		Number of bytes to allocate
+ *    @param    size        Number of bytes to allocate
  *
- *	@return	Pointer to the first address in the allocated memory
- *			Will be NULL if the memory was not allocated
+ *    @return    Pointer to the first address in the allocated memory
+ *            Will be NULL if the memory was not allocated
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 void * os_mem_alloc( uint32 size );
 
 /*****************************************************************************/
 /*!
- *	@brief	Frees memory and releases it to the heap
+ *    @brief    Frees memory and releases it to the heap
  *
- *	@param	memory		Memory allocation to free
+ *    @param    memory        Memory allocation to free
  *
- *	@return	None
+ *    @return    None
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 void os_mem_free( void * memory );

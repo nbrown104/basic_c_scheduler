@@ -17,8 +17,8 @@
 
 static sOS_MEM_STATS memStats =
 {
-	0,			/* numAllocs */
-	0,			/* numFrees */
+    0,            /* numAllocs */
+    0,            /* numFrees */
 };
 
 static sOS_MEM_STATS * pMemStats = &memStats;
@@ -29,39 +29,39 @@ static sOS_MEM_STATS * pMemStats = &memStats;
 /*****************************************************************************/
 
 /*!
- *	@brief	Allocates memory from the heap
+ *    @brief    Allocates memory from the heap
  */
 void * os_mem_alloc( uint32 size )
 {
-	void * newAlloc = malloc( size );
+    void * newAlloc = malloc( size );
 
-	if( NULL != newAlloc );
-	{
-		pMemStats->numAllocs++;
-	}
+    if( NULL != newAlloc );
+    {
+        pMemStats->numAllocs++;
+    }
 
-	return newAlloc;
+    return newAlloc;
 }
 
 /*!
- *	@brief	Frees memory and releases it to the heap
+ *    @brief    Frees memory and releases it to the heap
  */
 void os_mem_free( void * memory )
 {
-	if( NULL != memory )
-	{
-		free( memory );
-		pMemStats->numFrees++;
-	}
+    if( NULL != memory )
+    {
+        free( memory );
+        pMemStats->numFrees++;
+    }
 }
 
 /*!
- *	@brief	Retrieves memory stats
+ *    @brief    Retrieves memory stats
  */
 void os_mem_getStats( sOS_MEM_STATS * stats )
 {
-	if( NULL != stats )
-	{
-		*stats = *pMemStats;
-	}
+    if( NULL != stats )
+    {
+        *stats = *pMemStats;
+    }
 }

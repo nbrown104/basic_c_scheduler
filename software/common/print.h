@@ -13,8 +13,8 @@
 /* defines                                                                   */
 /*****************************************************************************/
 
-#define _PRINTF		printf
-#define	_OUT( m )	_PRINTF( " [%15s][%04d] ", ( m ), __LINE__ ); _PRINTF 
+#define _PRINTF        printf
+#define    _OUT( m )    _PRINTF( " [%15s][%04d] ", ( m ), __LINE__ ); _PRINTF 
 
 
 #endif // _PRINT_H_

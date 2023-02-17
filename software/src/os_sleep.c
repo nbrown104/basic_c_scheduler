@@ -13,7 +13,7 @@
 /* defines                                                                   */
 /*****************************************************************************/
 
-#define OUT	_OUT( "OS_SLEEP" )
+#define OUT    _OUT( "OS_SLEEP" )
 
 
 /*****************************************************************************/
@@ -21,10 +21,10 @@
 /*****************************************************************************/
 
 /*!
- *	@brief	Sleeps for an allocated period of time (in ms)
+ *    @brief    Sleeps for an allocated period of time (in ms)
  */
-int os_sleep_ms( uint32	sleepMs )
+int os_sleep_ms( uint32    sleepMs )
 {
-	return os_scheduler_sleepTask( sleepMs );
+    return os_scheduler_sleepTask( sleepMs );
 }
 

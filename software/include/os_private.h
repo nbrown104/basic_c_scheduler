@@ -13,7 +13,7 @@
 /* defines                                                                   */
 /*****************************************************************************/
 
-#define OS_MAX_TASKS			( OS_MAX_PRIO + 1 )
+#define OS_MAX_TASKS            ( OS_MAX_PRIO + 1 )
 
 
 /*****************************************************************************/
@@ -26,19 +26,19 @@
 /*****************************************************************************/
 
 /*!
- *	@enum	eOS_TASK_STATE
- *	@brief	Current state of a task
+ *    @enum    eOS_TASK_STATE
+ *    @brief    Current state of a task
  */
 typedef enum eOS_TASK_STATE
 {
-	eOS_TASK_STATE_IDLE = 0,
-	eOS_TASK_STATE_RUNNING,
-	eOS_TASK_STATE_BLOCKED,
-	eOS_TASK_STATE_SLEEPING,
-	eOS_TASK_STATE_SUSPENDED,
-	eOS_TASK_STATE_COMPLETE,
+    eOS_TASK_STATE_IDLE = 0,
+    eOS_TASK_STATE_RUNNING,
+    eOS_TASK_STATE_BLOCKED,
+    eOS_TASK_STATE_SLEEPING,
+    eOS_TASK_STATE_SUSPENDED,
+    eOS_TASK_STATE_COMPLETE,
 
-	MAX_OS_TASK_STATE
+    MAX_OS_TASK_STATE
 
 } eOS_TASK_STATE;
 
@@ -48,121 +48,121 @@ typedef enum eOS_TASK_STATE
 /*****************************************************************************/
 
 /*!
- *	@struct	sOS_MEM_STATS
- *	@brief	Statistics of the current runtime memory stats
+ *    @struct    sOS_MEM_STATS
+ *    @brief    Statistics of the current runtime memory stats
  */
 typedef struct sOS_MEM_STATS
 {
-	uint32		numAllocs;
-	uint32		numFrees;
+    uint32        numAllocs;
+    uint32        numFrees;
 
 } sOS_MEM_STATS;
 
 /*!
- *	@struct	sOS_TASK
- *	@brief	Holds all info pertaining to a task
+ *    @struct    sOS_TASK
+ *    @brief    Holds all info pertaining to a task
  */
 typedef struct sOS_TASK
 {
-	char *			name;
+    char *            name;
 
-	int				prio;
-	eOS_TASK_STATE	state;
-	uint32			msToWake;
+    int                prio;
+    eOS_TASK_STATE    state;
+    uint32            msToWake;
 
-	OS_TASK_FUNC *	func;
-	void *			args;
+    OS_TASK_FUNC *    func;
+    void *            args;
 
-	void *			nextTask;
+    void *            nextTask;
 
 } sOS_TASK;
 
 /*!
- *	@struct	sOS_PROFILE
- *	@brief	Holds all info pertaining to the OS
+ *    @struct    sOS_PROFILE
+ *    @brief    Holds all info pertaining to the OS
  */
 typedef struct sOS_PROFILE
 {
-	uint64			cycleCount;
-	int				taskCount;
-	sOS_TASK *		taskList;
-	sOS_TASK *		activeTask;
+    uint64            cycleCount;
+    int                taskCount;
+    sOS_TASK *        taskList;
+    sOS_TASK *        activeTask;
 
 } sOS_PROFILE;
 
 
 /*****************************************************************************/
-/* public function declaration                                           	 */
+/* public function declaration                                               */
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*		OS init                                                              */
+/*      OS init                                                              */
 /*****************************************************************************/
 
 
 /*****************************************************************************/
-/*		OS scheduler                                                         */
+/*      OS scheduler                                                         */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Initalises OS scheduler and begins scheduling loop
+ *    @brief    Initalises OS scheduler and begins scheduling loop
  *
- *	@param	osProfile	Pointer to the OS profile to run
+ *    @param    osProfile    Pointer to the OS profile to run
  *
- *	@return	ERROR		Scheduler has not been started
- *						This function should not return
+ *    @return    ERROR        Scheduler has not been started
+ *                        This function should not return
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 int os_scheduler_start( sOS_PROFILE *osProfile );
 
 /*****************************************************************************/
 /*!
- *	@brief	Adds a newly created task to the scheduler
+ *    @brief    Adds a newly created task to the scheduler
  *
- *	@param	newTask		Pointer to new task structure
+ *    @param    newTask        Pointer to new task structure
  *
- *	@return	OK			Task has been successfully added to the scheduler
- *			ERROR		Task wasn't added to the scheduler and should be freed
+ *    @return    OK            Task has been successfully added to the scheduler
+ *            ERROR        Task wasn't added to the scheduler and should be freed
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 int os_scheduler_addTask( sOS_TASK * newTask );
 
 /*****************************************************************************/
 /*!
- *	@brief	Tells the scheduler to put a task to sleep
+ *    @brief    Tells the scheduler to put a task to sleep
  *
- *	@param	sleepMs		Duration (in ms) for task to sleep
+ *    @param    sleepMs        Duration (in ms) for task to sleep
  *
- *	@return	OK			Task will be put to sleep
- *			ERROR		Task has not been put to sleeo
+ *    @return    OK            Task will be put to sleep
+ *            ERROR        Task has not been put to sleeo
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 int os_scheduler_sleepTask( uint32 sleepMs );
 
 /*****************************************************************************/
-/*		OS task                                                              */
+/*      OS task                                                              */
 /*****************************************************************************/
 
 /*****************************************************************************/
-/*		OS mem                                                               */
+/*      OS mem                                                               */
 /*****************************************************************************/
 
 /*****************************************************************************/
 /*!
- *	@brief	Retrieves memory stats
+ *    @brief    Retrieves memory stats
  *
- *	@param	stats		Pointer to memory stats struct to populate
+ *    @param    stats        Pointer to memory stats struct to populate
  *
- *	@return	None
+ *    @return    None
  *
- *	@notes	None
+ *    @notes    None
  */
 /*****************************************************************************/
 void os_mem_getStats( sOS_MEM_STATS * stats );
